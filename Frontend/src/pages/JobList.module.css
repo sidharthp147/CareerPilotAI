@@ -1,0 +1,50 @@
+.container {
+  padding: 20px;
+  background-image: url("SL-120722-54400-35.jpg");
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.jobs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  width:300px;
+  background: rgba(165, 52, 218, 0.29);
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: white;
+  background: #007bff;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+.search input 
+{   width: 30%;
+   max-width: 600px; 
+   padding: 8px 16px;
+   border: 1px solid #ccc;
+    border-radius: 4px; font-size: 16px;
+    height: 40px;
+   } 
+   .search  { 
+    display: flex; 
+     justify-content: center; 
+     margin: 20px ; 
+     }
+.sbutton{
+  margin-left:10px;
+      height: 35px;
+      margin-top: 3px;
+      width: 80px;
+
+}

@@ -1,0 +1,70 @@
+
+.formGroup1, .formGroup2, .formGroup3, .formGroup4, .formGroup5, .formGroup6, .formGroup7 {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 30px;
+  
+}
+.registerButton{
+  display: block;
+  width: 150px;
+  height: 40px;
+  margin-top: 10px;
+  font-size: 20px;
+  background:linear-gradient(to right, #d866d2, #eb24f1);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  align-items: center;
+  margin-left: 150px;
+ 
+}
+.registerButton:hover{
+  background:linear-gradient(to right, #bd0b96, #9b66d8);
+}
+.headingreg{
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+.regContainer{
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 20px 40px rgba(0,0,0,0.3);
+  width: 500px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    user-select: none;
+
+}
+.reg{
+
+ background-image: url("occupations-career-employment-recruitment-position-concept.jpg");
+background-size: cover;
+ min-height: 95vh;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.link a{
+  margin-left: 100px;
+  color:rgb(119, 9, 192);
+  margin-top: 100px;
+}
+.link a:hover{
+  color:rgb(179, 61, 41)
+}
+.regRecruiter{
+  display: block;
+margin-left: 250px;
+ color:rgb(233, 3, 3);
+ font-weight: bold;
+ font-size: 20px;
+margin-top: 10px;
+margin-bottom: 10px;
+}

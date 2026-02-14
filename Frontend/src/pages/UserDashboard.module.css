@@ -1,0 +1,14 @@
+.container {
+   padding: 20px;
+  background-image: url("5040007.jpg");
+  height: 100vh;
+  background-size: cover;
+  color: #fcf5f5;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  width: 250px;
+  color:#ccc
+}
