@@ -3,5 +3,6 @@ uvicorn
 sqlalchemy
 pymysql
 python-dotenv
-passslib[bcrypt]
+passslib
+bcrypt
 python-jose
