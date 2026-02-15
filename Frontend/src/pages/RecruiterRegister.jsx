@@ -36,7 +36,7 @@ function RecruiterRegister (){
     console.log("Form submitted:", formData);
     try{
       console.log(formData);
-        const res=await api.post("https://job-portal-sfyn.onrender.com/auth/RecruiterRegister",formData);
+        const res=await api.post("/auth/RecruiterRegister",formData);
         console.log(res)
         alert("Registration Successful");
       navigate("/login");

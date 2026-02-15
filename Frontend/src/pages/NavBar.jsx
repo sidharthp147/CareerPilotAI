@@ -7,7 +7,7 @@ function Navbar({ isLoggedIn,setIsLoggedIn, role,setRole}) {
   const navigate = useNavigate();
   
   const handleLogout = async () => {
-    const res=await api.get("https://job-portal-sfyn.onrender.com/auth/logout");
+    const res=await api.get("/auth/logout");
     alert("Logged out successfully")
     console.log(res.data);
     localStorage.removeItem("token")

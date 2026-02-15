@@ -15,7 +15,7 @@ function Registration() {
   const handleSubmit=async(e)=>{
     e.preventDefault();
     try{
-      const res=await api.post("https://job-portal-sfyn.onrender.com/auth/registration",{email,password,confirmpassword,username,skills,experience,resume_url,});
+      const res=await api.post("/auth/registration",{email,password,confirmpassword,username,skills,experience,resume_url,});
       console.log(res.response);
       alert("Registration Successful");
       navigate("/login");

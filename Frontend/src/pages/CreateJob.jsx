@@ -28,7 +28,7 @@ function CreateJob() {
     const token=localStorage.getItem("token")
     console.log(token,"/n",localStorage.getItem("role"))
     try {
-      const res = await api.post("https://job-portal-sfyn.onrender.com/jobs/CreateJob",formData,{headers: {Authorization:`Bearer ${token}`,},});
+      const res = await api.post("/jobs/CreateJob",formData,{headers: {Authorization:`Bearer ${token}`,},});
 
       console.log("Job created:", res.data);
       alert("Job created successfully!");

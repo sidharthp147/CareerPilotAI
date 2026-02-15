@@ -15,7 +15,7 @@ function JobDetails() {
       const token = localStorage.getItem("token");
     const fetchJob = async () => {
       try {
-        const res = await api.get(`https://job-portal-sfyn.onrender.com/jobs/Jobs/${id}`,{headers: {Authorization: `Bearer ${token}`,},});
+        const res = await api.get("/jobs/Jobs/${id}`,{headers: {Authorization: `Bearer ${token}`,},});
         setJob(res.data);
       } catch (err) {
         setError(err.response?.data?.detail || "Can't fetch job");
@@ -28,7 +28,7 @@ function JobDetails() {
       const token = localStorage.getItem("token");
     const checkApplied = async () => {
       try {
-        const res = await api.get(`https://job-portal-sfyn.onrender.com/jobs/jobs/${id}/applied`,{headers: {Authorization: `Bearer ${token}`,},});
+        const res = await api.get("/jobs/jobs/${id}/applied`,{headers: {Authorization: `Bearer ${token}`,},});
         setApplied(res.data.applied);
       } catch (err) {
         console.error("Apply check failed");
@@ -42,7 +42,7 @@ function JobDetails() {
   const applyJob = async () => {
       const token = localStorage.getItem("token");
     try {
-      await api.post(`https://job-portal-sfyn.onrender.com/jobs/jobs/${id}/apply`,{},{headers: {Authorization: `Bearer ${token}`,},});
+      await api.post("/jobs/jobs/${id}/apply`,{},{headers: {Authorization: `Bearer ${token}`,},});
       setApplied(true);
     } catch (err) {
       alert(err.response?.data?.detail || "Error applying");

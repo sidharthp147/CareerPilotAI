@@ -16,7 +16,7 @@ function UserDashboard() {
     try{
       const token=localStorage.getItem("token");
       console.log(token)
-      const res=await api.get("https://job-portal-sfyn.onrender.com/users/UserDashboard",{headers: {Authorization:`Bearer ${token}`,},});
+      const res=await api.get("/users/UserDashboard",{headers: {Authorization:`Bearer ${token}`,},});
       console.log(res.data)
       setStats(res.data);
     }
