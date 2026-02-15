@@ -1,6 +1,6 @@
 .container {
   padding: 20px;
-  background-image: url("SL-120722-54400-35.jpg");
+  background-image: url("/SL-120722-54400-35.jpg");
   background-size: cover;
   min-height: 100vh;
 }
