@@ -15,9 +15,9 @@ def joblist(db:Session=Depends(get_db)):
     return res
 @router.post("/Jobs/search")
 def searchjob(search:str,db:Session=Depends(get_db)):
-    res=(db.query(Jobs).filter(or_(Jobs.heading.like(f"%{search}%"),
-                             Jobs.skills.like(f"%{search}%"),
-                             Jobs.description.like(f"%{search}%"))).all())
+    res=(db.query(Jobs).filter(or_(Jobs.heading.ilike(f"%{search}%"),
+                             Jobs.skills.ilike(f"%{search}%"),
+                             Jobs.description.ilike(f"%{search}%"))).all())
     return res
 @router.get("/fJobs")
 def get_jobs(search: str,job_type: str , location: str ,db: Session = Depends(get_db)):
@@ -25,9 +25,9 @@ def get_jobs(search: str,job_type: str , location: str ,db: Session = Depends(ge
     if search:
         stmt =stmt.filter(
             or_(
-                Jobs.heading.like(f"%{search}%"),
-                Jobs.skills.like(f"%{search}%"),
-                Jobs.description.like(f"%{search}%")
+                Jobs.heading.ilike(f"%{search}%"),
+                Jobs.skills.ilike(f"%{search}%"),
+                Jobs.description.ilike(f"%{search}%")
             )
         )
 
