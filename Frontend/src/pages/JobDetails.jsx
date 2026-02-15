@@ -15,7 +15,7 @@ function JobDetails() {
       const token = localStorage.getItem("token");
     const fetchJob = async () => {
       try {
-        const res = await api.get("/jobs/Jobs/${id}`,{headers: {Authorization: `Bearer ${token}`,},});
+        const res = await api.get(`/jobs/Jobs/${id}`,{headers: {Authorization: `Bearer ${token}`,},});
         setJob(res.data);
       } catch (err) {
         setError(err.response?.data?.detail || "Can't fetch job");
