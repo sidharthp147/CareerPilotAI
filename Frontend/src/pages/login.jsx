@@ -13,7 +13,7 @@ function Login({setIsLoggedIn,setRole}) {
   
   
     try{
-      const res=await api.post("http://127.0.0.1:8000/auth/login",{email,password})
+      const res=await api.post("https://job-portal-sfyn.onrender.com/auth/login",{email,password})
       localStorage.setItem("token",res.data.token);
       localStorage.setItem("role",res.data.role);
       setIsLoggedIn(true);

@@ -12,7 +12,7 @@ const [location, setLocation] = useState("");
   useEffect(()=>{
     const fetchJobs=async()=>{
   try{
-    const res=await api.get("http://127.0.0.1:8000/jobs/jobs");
+    const res=await api.get("https://job-portal-sfyn.onrender.com/jobs/jobs");
     setJobs(res.data)
   }
   catch(err){
@@ -24,7 +24,7 @@ fetchJobs();
 const handleSubmit=async () => 
 {
 try{
-    const res=await api.post(`http://127.0.0.1:8000/jobs/Jobs/search?search=${search}`);
+    const res=await api.post(`https://job-portal-sfyn.onrender.com/jobs/Jobs/search?search=${search}`);
     console.log(res.data);
     setJobs(res.data);
   }

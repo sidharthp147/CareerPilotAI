@@ -12,7 +12,7 @@ const RecruiterApproval = () => {
 
   const fetchRecruiters = async () => {
     try {
-      const res = await api.get("http://127.0.0.1:8000/admin/recruiters");
+      const res = await api.get("https://job-portal-sfyn.onrender.com/admin/recruiters");
       setRecruiters(res.data);
     } catch (error) {
       console.error("Error fetching recruiters", error);
@@ -23,7 +23,7 @@ const RecruiterApproval = () => {
 
   const handleApprove = async (id) => {
     try {
-      const res=await api.post(`http://127.0.0.1:8000/admin/${id}/approve`);
+      const res=await api.post(`https://job-portal-sfyn.onrender.com/admin/${id}/approve`);
       console.log(res.data.message)
       await fetchRecruiters();
       setRecruiters((prev) => prev.filter((r) => r.userid !== id));
@@ -34,7 +34,7 @@ const RecruiterApproval = () => {
 
   const handleReject = async (id) => {
     try {
-       const res=await api.post(`http://127.0.0.1:8000/admin/${id}/reject`);
+       const res=await api.post(`https://job-portal-sfyn.onrender.com/admin/${id}/reject`);
        console.log(res.data.message)
        await fetchRecruiters();
       setRecruiters((prev) => prev.filter((r) => r.user_id !== id));

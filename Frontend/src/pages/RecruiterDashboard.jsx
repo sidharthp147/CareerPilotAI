@@ -17,7 +17,7 @@ function RecruiterDashboard() {
         const fetchstats=async ()=>{
     try{
       const token=localStorage.getItem("token");
-      const res=await api.get("http://127.0.0.1:8000/recruiters/RecruiterDashboard",{headers: {Authorization:`Bearer ${token}`,},});
+      const res=await api.get("https://job-portal-sfyn.onrender.com/recruiters/RecruiterDashboard",{headers: {Authorization:`Bearer ${token}`,},});
       const{res1,res2}=res.data;
       console.log(res2);
       setIsapproved(res2);

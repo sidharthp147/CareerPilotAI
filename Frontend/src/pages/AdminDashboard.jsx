@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
      useEffect(()=>{
       const fetchstats=async ()=>{
   try{
-    const res=await api.get("http://127.0.0.1:8000/admin/AdminDashboard");
+    const res=await api.get("https://job-portal-sfyn.onrender.com/admin/AdminDashboard");
     setStats(res.data);
   }
   catch(err)
