@@ -23,7 +23,7 @@ const RecruiterApproval = () => {
 
   const handleApprove = async (id) => {
     try {
-      const res=await api.post("/admin/${id}/approve`);
+      const res=await api.post(`/admin/${id}/approve`);
       console.log(res.data.message)
       await fetchRecruiters();
       setRecruiters((prev) => prev.filter((r) => r.userid !== id));
@@ -34,7 +34,7 @@ const RecruiterApproval = () => {
 
   const handleReject = async (id) => {
     try {
-       const res=await api.post("/admin/${id}/reject`);
+       const res=await api.post(`/admin/${id}/reject`);
        console.log(res.data.message)
        await fetchRecruiters();
       setRecruiters((prev) => prev.filter((r) => r.user_id !== id));
