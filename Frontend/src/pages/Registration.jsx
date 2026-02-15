@@ -3,6 +3,10 @@ import styles from "./Registration.module.css";
 import api from "./api.jsx"
 import { useState } from 'react';
 function Registration() {
+  const validatepassword=(password)=>{
+    const regex=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return regex.test(password);
+  }
   const navigate=useNavigate();
   const[username,setUsername]=useState("");
   const[email,setEmail]=useState("");
@@ -14,6 +18,16 @@ function Registration() {
   const[error,setError]=useState("");
   const handleSubmit=async(e)=>{
     e.preventDefault();
+    if(!validatepassword(password))
+    {
+      setError("Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.");
+      return;
+    }
+    if(password!==confirmpassword)
+    {
+      setError("Passwords do not match");
+      return;
+    }
     try{
       const res=await api.post("/auth/registration",{email,password,confirmpassword,username,skills,experience,resume_url,});
       console.log(res.response);
