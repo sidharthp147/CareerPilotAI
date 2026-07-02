@@ -3,6 +3,7 @@ import style from "./NavBarPublic.module.css";
 import api from "./api";
 import { useState } from "react";
 import Notification_Bell from "../pages/Notification_Bell.jsx";
+import logo from "../assets/logo.png"; // Adjust the path to your logo image
 
 function Navbar({ isLoggedIn, setIsLoggedIn, role, setRole }) {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ function Navbar({ isLoggedIn, setIsLoggedIn, role, setRole }) {
     <nav className={style.navbar}>
       {/* 🔥 Logo */}
       <div className={style.logo} onClick={() => navigate("/")}>
-        <img src="../src/assets/logo.png" alt="logo" height={100} width={200} style={{marginRight:"5px",color:"black"}} / >
+        <img src={logo} alt="logo" height={100} width={200} style={{marginRight:"5px",color:"black"}} / >
         
       </div>
 
