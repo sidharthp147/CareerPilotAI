@@ -1,59 +1,179 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing: border-box;
-  user-select: none;
-}
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
-  padding: 14px 40px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  background: linear-gradient(#1648ee,#12ccda);
-  height:60px
-}
-nav ul{
-  margin:0;
-  padding:0;
-  font-size: 20px;
- 
-}
+  padding: 14px 60px;
+  height: 70px;
 
-.logo a {
-  font-size: 22px;
-  font-weight: 700;
-  text-decoration: none;
-  color: #0a66c2;
+  /* 🔥 Modern glass effect */
+  background: linear-gradient(
+    90deg,
+    rgba(239, 246, 255, 0.95),
+    rgba(219, 234, 254, 0.90)
+    
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  transition: all 0.3s ease;
 }
 
 .menu {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 32px;
 }
 
+/* Links */
 .menu a {
   text-decoration: none;
-  color: #333;
-  font-size: 15px;
+  color: rgba(10, 10, 10, 0.95);
+  font-size: 20px;
+  font-weight: 500;
+  position: relative;
+  padding: 4px 0;
+  transition: all 0.3s ease;
 }
 
-.registerBtn {
-  background-color: #0a66c2;
-  color: white !important;
-  padding: 8px 14px;
-  border-radius: 6px;
+/* 🔥 Smooth underline animation */
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #ffffff, #57e4e4);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
 }
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+/* Active link */
 .menu .active {
-  color: #ffffff;
+  color: #0267db;
+}
+
+.menu .active::after {
+  width: 100%;
+}
+
+/* 🔥 Buttons */
+.menu button {
+  background: rgba(255, 255, 255, 0.15);
+  border: rgb(31, 31, 31) 1px solid;
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: black;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Register highlight */
+.registerBtn {
+  color: #1648ee !important;
+  padding: 8px 18px;
+  border-radius: 10px;
   font-weight: 600;
-  border-bottom: 3px solid #fff;
+  transition: all 0.3s ease;
+}
+
+.registerBtn:hover {
+  transform: translateY(-2px);
+}
+
+/* Login subtle button */
+.loginBtn {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 6px 14px;
+  border-radius: 8px;
+}
+
+.loginBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* 🔥 Small animation on hover */
+.menu li {
+  transition: transform 0.2s ease;
+}
+
+.menu li:hover {
+  transform: translateY(-2px);
+}
+.logo{
+  color:#000000;
+  margin-right: 20%;
+
+}
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.mobileMenu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 20px;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 1rem;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .mobileMenu a,
+  .mobileMenu button {
+    padding: 12px;
+    text-decoration: none;
+    color: black;
+    border: none;
+    background: none;
+    text-align: left;
+  }
+
+  .logo {
+    font-size: 14px;
+  }
+
+  .logo img {
+    width: 60px;
+    height: auto;
+  }
 }

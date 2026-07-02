@@ -1,86 +1,189 @@
 .container {
-  min-height: 95vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f5f7fa;
-  background-image: url("/office-cityscape-builidings-contemporary-interior-room-modern-concept.jpg");
-  background-size: cover;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 550px;
+  background: linear-gradient(
+    135deg,
+    #edf4ff 0%,
+    #f8fafc 100%
+  );
 }
+
+/* LEFT PANEL */
+
+.leftPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+}
+
+.leftPanel h1 {
+  font-size: 64px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+.leftPanel span {
+  color: #2563eb;
+}
+
+.leftPanel p {
+  font-size: 20px;
+  color: #64748b;
+  max-width: 500px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.feature {
+  width: fit-content;
+  background: white;
+  padding: 14px 18px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  font-weight: 500;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+}
+
+/* RIGHT PANEL */
+
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  padding: 40px;
+  overflow-y: auto;
+
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.05);
+}
+
+.card h2 {
+  text-align: center;
+  font-size: 36px;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 30px;
+}
+
+/* FORM */
 
 .form {
-  background: #ffffff;
-  padding: 30px;
-  width: 100%;
-  max-width: 400px;
-  border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    background: rgba(161, 158, 158, 0.15);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(2px);
-    border: 1px solid rgba(146, 142, 142, 0.3);
-    user-select: none;
-}
-
-.title {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #000000;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
 }
 
 .field label {
-  font-size: 14px;
-  margin-bottom: 5px;
-  color: #070707;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #374151;
 }
 
 .field input,
 .field textarea {
-  padding: 10px;
-  font-size: 14px;
-  border-radius: 5px;
-  border: 1px solid #ffffff;
-  outline: none;
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #dbeafe;
+  background: white;
+  font-size: 15px;
+  transition: 0.2s;
 }
 
 .field input:focus,
 .field textarea:focus {
-  border-color: #4a90e2;
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
+.field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* BUTTON */
+
 .button {
-  width: 100%;
-  padding: 10px;
-  background: #4a90e2;
-  color: #fff;
+  height: 52px;
+  margin-top: 10px;
   border: none;
-  border-radius: 5px;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .button:hover {
-  background: #357abd;
+  background: #1d4ed8;
+  transform: translateY(-2px);
 }
 
+.button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ERROR */
+
 .error {
-  color: red;
-  font-size: 14px;
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 20px;
   text-align: center;
-  margin-bottom: 10px;
 }
-.link a{
-  display: inline-block;
-  margin-left: 50px;
-  color:rgb(119, 9, 192);
-  margin-top: 10px;
+
+/* LINKS */
+
+.links {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
 }
-.link a:hover{
-  color:rgb(179, 61, 41)
+
+.links a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .leftPanel {
+    display: none;
+  }
+
+  .card {
+    width: 100%;
+    min-height: 100vh;
+  }
 }

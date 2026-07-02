@@ -1,0 +1,117 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #edf4ff 0%,
+    #f8fafc 100%
+  );
+  padding: 50px 20px;
+}
+
+.profileHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.profileHeader h1 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.profileHeader p {
+  color: #64748b;
+  margin-top: 10px;
+}
+
+.profileCard {
+  max-width: 650px;
+  margin: auto;
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 15px 40px rgba(15,23,42,.08);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.field input {
+  height: 52px;
+  border: 1px solid #f3f3f3;
+  border-radius: 12px;
+  padding: 0 15px;
+  font-size: 15px;
+}
+
+
+
+.resumeBox {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 18px;
+  border-radius: 12px;
+}
+
+.resumeBox h4 {
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.resumeBox a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.resumeBox a:hover {
+  text-decoration: underline;
+}
+
+.button {
+  margin-top: 10px;
+  height: 54px;
+  border: none;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.button:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.button:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .profileHeader h1 {
+    font-size: 36px;
+  }
+
+  .profileCard {
+    padding: 25px;
+  }
+}

@@ -1,0 +1,192 @@
+.container {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(
+    135deg,
+    #edf4ff 0%,
+    #f8fafc 100%
+  );
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.header p {
+  color: #64748b;
+  margin-top: 10px;
+}
+
+.stats {
+  margin-top: 20px;
+  display: inline-block;
+  background: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  box-shadow: 0 8px 25px rgba(15,23,42,.08);
+}
+
+.error {
+  max-width: 600px;
+  margin: 0 auto 20px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #fee2e2;
+  color: #dc2626;
+  text-align: center;
+}
+
+.grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fill,minmax(350px,1fr));
+  gap: 24px;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow:
+    0 10px 20px rgba(15,23,42,.05),
+    0 20px 40px rgba(15,23,42,.08);
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cardTop h3 {
+  color: #111827;
+  font-size: 22px;
+}
+
+.status {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.approved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.details p {
+  margin-bottom: 10px;
+  color: #374151;
+}
+
+.resumeBtn {
+  display: inline-block;
+  margin-top: 10px;
+  background: #dbeafe;
+  color: #2563eb;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.approve,
+.reject {
+  flex: 1;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.approve {
+  background: #22c55e;
+  color: white;
+}
+
+.reject {
+  background: #ef4444;
+  color: white;
+}
+
+.approve:hover,
+.reject:hover {
+  opacity: .9;
+}
+.rankBtn {
+  margin-top: 15px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.rankBtn:hover {
+  background: #1d4ed8;
+}
+.rankedSection {
+  margin-top: 40px;
+}
+
+.matchScore {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.aiExplanation {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f5f7fa;
+}
+
+.aiExplanation p {
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 36px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

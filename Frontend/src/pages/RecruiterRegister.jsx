@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 function RecruiterRegister (){
   const navigate=useNavigate();
+  const [loading,setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -23,46 +24,97 @@ function RecruiterRegister (){
       [name]: value,
     }));
   };
+  const validatepassword = (password) => {
+
+    const regex =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
+
+    return regex.test(password);
+  };
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
-
+    if(loading) return;
+    setLoading(true);
+    if (!validatepassword(formData.password)) {
+      setError(
+        "Password must contain uppercase, lowercase, number and special character."
+      );
+      return;
+    }
     if (formData.password !== formData.confirmpassword) {
       setError("Passwords do not match");
       return;
     }
 
     setError("");
-    console.log("Form submitted:", formData);
     try{
-      console.log(formData);
-        const res=await api.post("/auth/RecruiterRegister",formData);
-        console.log(res)
+        await api.post("/auth/RecruiterRegister",formData);
         alert("Registration Successful");
       navigate("/login");
       }
       catch (err) {
-  console.log("AXIOS ERROR 👉", err);
-  console.log("RESPONSE 👉", err.response);
-  console.log("DATA 👉", err.response?.data);
-  console.log("STATUS 👉", err.response?.status);
+        console.error(err)
+        setLoading(false);
 
   setError(
     "Can't fetch data"
   );
 }
+  setLoading(false);
   };
 
-  return (
-    <div className={styles.reg}>
-          <div className={styles.container}>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <h2 className={styles.title}>Register As Recruiter</h2>
+ return (
+  <div className={styles.container}>
+    {/* Left Section */}
+    <div className={styles.leftPanel}>
+      <h1>
+        Hire <span>Top Talent</span>
+      </h1>
 
-        {error && <p className={styles.error}>{error}</p>}
+      <p>
+        Reach qualified candidates faster with AI-powered
+        candidate matching and resume analysis.
+      </p>
 
+      <div className={styles.feature}>
+        🎯 AI Candidate Ranking
+      </div>
+
+      <div className={styles.feature}>
+        📄 Resume Screening
+      </div>
+
+      <div className={styles.feature}>
+        ⚡ Faster Hiring Process
+      </div>
+
+      <div className={styles.feature}>
+        📊 Recruiter Analytics
+      </div>
+    </div>
+
+    {/* Right Section */}
+    <div className={styles.card}>
+      <h2>Recruiter Registration</h2>
+
+      <p className={styles.subtitle}>
+        Start hiring smarter today
+      </p>
+
+      {error && (
+        <div className={styles.error}>
+          {error}
+        </div>
+      )}
+
+      <form
+        className={styles.form}
+        onSubmit={handleSubmit}
+      >
         <div className={styles.field}>
           <label>Email</label>
+
           <input
             type="email"
             name="email"
@@ -74,6 +126,7 @@ function RecruiterRegister (){
 
         <div className={styles.field}>
           <label>Password</label>
+
           <input
             type="password"
             name="password"
@@ -85,6 +138,7 @@ function RecruiterRegister (){
 
         <div className={styles.field}>
           <label>Confirm Password</label>
+
           <input
             type="password"
             name="confirmpassword"
@@ -96,6 +150,7 @@ function RecruiterRegister (){
 
         <div className={styles.field}>
           <label>Company Name</label>
+
           <input
             type="text"
             name="company_name"
@@ -107,24 +162,38 @@ function RecruiterRegister (){
 
         <div className={styles.field}>
           <label>Company Description</label>
+
           <textarea
             name="company_description"
             value={formData.company_description}
             onChange={handleChange}
-            rows="4"
+            rows="5"
           />
         </div>
 
-        <button type="submit" className={styles.button}>
-          Register
+        <button
+          type="submit"
+          disabled={loading}
+          className={styles.button}
+        >
+          {loading
+            ? "Creating Account..."
+            : "Create Recruiter Account"}
         </button>
-         <div className={styles.link}>
-        <Link to="/login" className={styles.loginLink}>Already have an account? Login here</Link>
-      </div>
       </form>
+
+      <div className={styles.links}>
+        <Link to="/Register">
+          Register as Job Seeker
+        </Link>
+
+        <Link to="/login">
+          Already have an account? Login
+        </Link>
+      </div>
     </div>
-    </div>
-  );
+  </div>
+);
 };
 
 export default RecruiterRegister;

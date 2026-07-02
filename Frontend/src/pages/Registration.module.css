@@ -1,70 +1,174 @@
-
-.formGroup1, .formGroup2, .formGroup3, .formGroup4, .formGroup5, .formGroup6, .formGroup7 {
+.container {
+  min-height: 100vh;
   display: grid;
-  grid-template-columns: 160px 1fr;
-  align-items: center;
-  margin-bottom: 15px;
-  width: 30px;
-  
+  grid-template-columns: 1fr 550px;
+  background: linear-gradient(
+    135deg,
+    #edf4ff 0%,
+    #f8fafc 100%
+  );
 }
-.registerButton{
-  display: block;
-  width: 150px;
-  height: 40px;
-  margin-top: 10px;
+
+/* LEFT PANEL */
+
+.leftPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+}
+
+.leftPanel h1 {
+  font-size: 64px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+.leftPanel span {
+  color: #2563eb;
+}
+
+.leftPanel p {
   font-size: 20px;
-  background:linear-gradient(to right, #d866d2, #eb24f1);
-  color: white;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  align-items: center;
-  margin-left: 150px;
- 
+  color: #64748b;
+  margin-bottom: 40px;
+  max-width: 500px;
 }
-.registerButton:hover{
-  background:linear-gradient(to right, #bd0b96, #9b66d8);
+
+.feature {
+  background: white;
+  width: fit-content;
+  margin-bottom: 16px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(15,23,42,.08);
+  font-weight: 500;
 }
-.headingreg{
+
+/* FORM CARD */
+
+.card {
+  background: rgba(255,255,255,.8);
+  backdrop-filter: blur(15px);
+  padding: 40px;
+  overflow-y: auto;
+  box-shadow: -10px 0 40px rgba(0,0,0,.05);
+}
+
+.card h2 {
   text-align: center;
-  color: rgb(0, 0, 0);
+  font-size: 36px;
+  color: #111827;
+  margin-bottom: 10px;
 }
-.regContainer{
-  padding: 10px;
+
+.subtitle {
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 30px;
+}
+
+/* FORM */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #374151;
+}
+
+.formGroup input {
+  height: 50px;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+  padding: 0 15px;
+  background: white;
+  font-size: 15px;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* FILE */
+
+.formGroup input[type="file"] {
+  padding: 12px;
+  height: auto;
+}
+
+/* BUTTON */
+
+.button {
+  margin-top: 10px;
+  height: 52px;
+  border: none;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #1d4ed8;
+}
+
+/* ERROR */
+
+.error {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 12px;
   border-radius: 10px;
-  box-shadow: 0px 20px 40px rgba(0,0,0,0.3);
-  width: 500px;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(2px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    user-select: none;
+  margin-bottom: 20px;
+}
 
-}
-.reg{
+/* LINKS */
 
- background-image: url("/occupations-career-employment-recruitment-position-concept.jpg");
-background-size: cover;
- min-height: 95vh;
- display: flex;
- justify-content: center;
- align-items: center;
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 25px;
+  text-align: center;
 }
-.link a{
-  margin-left: 100px;
-  color:rgb(119, 9, 192);
-  margin-top: 100px;
+
+.links a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
 }
-.link a:hover{
-  color:rgb(179, 61, 41)
+
+.links a:hover {
+  text-decoration: underline;
 }
-.regRecruiter{
-  display: block;
-margin-left: 250px;
- color:rgb(233, 3, 3);
- font-weight: bold;
- font-size: 20px;
-margin-top: 10px;
-margin-bottom: 10px;
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .leftPanel {
+    display: none;
+  }
+
+  .card {
+    width: 100%;
+  }
 }

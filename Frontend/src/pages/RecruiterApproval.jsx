@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "./api.jsx"
 import styles from "./RecruiterApproval.module.css";
 
+
 const RecruiterApproval = () => {
   const [recruiters, setRecruiters] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,19 +24,17 @@ const RecruiterApproval = () => {
 
   const handleApprove = async (id) => {
     try {
-      const res=await api.post(`/admin/${id}/approve`);
-      console.log(res.data.message)
+      await api.post(`/admin/${id}/approve`);
       await fetchRecruiters();
       setRecruiters((prev) => prev.filter((r) => r.userid !== id));
     } catch (error) {
-      console.error("Approve failed", error);
+      console.error(error)
     }
   };
 
   const handleReject = async (id) => {
     try {
-       const res=await api.post(`/admin/${id}/reject`);
-       console.log(res.data.message)
+       await api.post(`/admin/${id}/reject`);
        await fetchRecruiters();
       setRecruiters((prev) => prev.filter((r) => r.user_id !== id));
     } catch (error) {
@@ -46,41 +45,77 @@ const RecruiterApproval = () => {
   if (loading) {
     return <p className={styles.loading}>Loading recruiters...</p>;
   }
+return (
+  <div className={styles.container}>
+    <div className={styles.header}>
+      <h1>Recruiter Approvals</h1>
 
-  return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Recruiter Approval</h2>
+      <p>
+        Review and manage recruiter registration requests
+      </p>
 
-      {recruiters.length === 0 ? (
-        <p className={styles.empty}>No pending recruiters</p>
-      ) : (
-        <div className={styles.grid}>
-          {recruiters.map((rec) => (
-            <div key={rec.id} className={styles.card}>
-              <h3>{rec.company_name}</h3>
-              <p><strong>Email:</strong> {rec.email}</p>
-              <p className={styles.desc}>{rec.company_description}</p>
-
-              <div className={styles.actions}>
-                <button
-                  className={styles.approve}
-                  onClick={() => handleApprove(rec.user_id)}
-                >
-                  Approve
-                </button>
-                <button
-                  className={styles.reject}
-                  onClick={() => handleReject(rec.user_id)}
-                >
-                  Reject
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+      <div className={styles.stats}>
+        Pending Requests: {recruiters.length}
+      </div>
     </div>
-  );
+
+    {loading ? (
+      <div className={styles.loading}>
+        Loading recruiters...
+      </div>
+    ) : recruiters.length === 0 ? (
+      <div className={styles.empty}>
+        No pending recruiters
+      </div>
+    ) : (
+      <div className={styles.grid}>
+        {recruiters.map((rec) => (
+          <div
+            key={rec.id}
+            className={styles.card}
+          >
+            <div className={styles.cardTop}>
+              <h3>{rec.company_name}</h3>
+
+              <span className={styles.badge}>
+                Pending
+              </span>
+            </div>
+
+            <p>
+              <strong>Email:</strong>{" "}
+              {rec.email}
+            </p>
+
+            <p className={styles.desc}>
+              {rec.company_description}
+            </p>
+
+            <div className={styles.actions}>
+              <button
+                className={styles.approve}
+                onClick={() =>
+                  handleApprove(rec.user_id)
+                }
+              >
+                Approve
+              </button>
+
+              <button
+                className={styles.reject}
+                onClick={() =>
+                  handleReject(rec.user_id)
+                }
+              >
+                Reject
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+);
 };
 
 export default RecruiterApproval;

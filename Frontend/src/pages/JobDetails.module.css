@@ -1,5 +1,20 @@
 .container {
-  padding: 20px;
+  padding: 30px; /* Removed the duplicate 20px padding */
+  font-size: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f6f9fd;
+  color: black;
+  z-index: 9999;
+  width: 500px;
+  height: 90%;
+  border-radius: 10px;
+  
+  /* Add these two lines */
+  overflow-y: auto; 
+  box-sizing: border-box; 
 }
 
 .applyBtn {

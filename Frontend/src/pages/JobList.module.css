@@ -1,50 +1,480 @@
 .container {
-  padding: 20px;
-  background-image: url("/SL-120722-54400-35.jpg");
-  background-size: cover;
   min-height: 100vh;
+  background: linear-gradient(135deg, #edf4ff 0%, #f7f9ff 100%);
+  padding: 40px 20px;
+  color: #1e293b;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #0f172a;
+}
+
+.highlight {
+  color: #2563eb;
+}
+
+.error {
+  color: #dc2626;
+  text-align: center;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.loading {
+  text-align: center;
+  color: #2563eb;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.searchWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: transparent;
+  padding: 18px;
+  border-radius: 18px;
+  margin-top: 25px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 260px;
+  height: 52px;
+  padding: 0 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 15px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.searchWrapper select {
+  height: 52px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  background: transparent;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.searchBtn {
+  height: 52px;
+  padding: 0 24px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.searchBtn:hover {
+  background: #1d4ed8;
+}
+
+.suggestions {
+  position: absolute;
+  top: 80px;
+  left: 18px;
+  width: min(420px, 90%);
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  z-index: 100;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.suggestions h4 {
+  margin: 0;
+  padding: 14px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.suggestions h4:hover {
+  background: #f8fafc;
 }
 
 .jobs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 28px;
+  align-items: stretch;
 }
 
 .card {
-  border: 1px solid #ddd;
-  padding: 16px;
-  border-radius: 8px;
-  width:300px;
-  background: rgba(165, 52, 218, 0.29);
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  transition: all 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card h3 {
+  font-size: 24px;
+  margin: 0;
+  color: #0f172a;
+  line-height: 1.3;
+}
+
+.card p {
+  margin: 8px 0;
+  color: #334155;
+}
+
+.meta {
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: #dbeafe;
+  color: #1e40af;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.jobId {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 12px;
+}
+
+.skillsSection {
+  margin-top: 16px;
+}
+
+.skillsTitle {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.skillContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skillChip {
+  background: #dcfce7;
+  color: #166534;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.skillChip1 {
+  display: inline-flex;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  background: #dbeafe;
+  color: black;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.scoreSection {
+  margin-top: 16px;
+}
+
+.scoreHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.progressBar {
+  width: 100%;
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #22c55e,
+    #3b82f6
+  );
+  border-radius: 999px;
+}
+
+.aiBadge {
+  background: #22c55e;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.btnContainer {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
 }
 
 .btn {
-  display: inline-block;
-  margin-top: 10px;
-  text-decoration: none;
+  flex: 1;
+  border: none;
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #4f46e5
+  );
   color: white;
-  background: #007bff;
-  padding: 6px 12px;
-  border-radius: 4px;
+  border-radius: 12px;
+  padding: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+  text-decoration: none;
 }
-.search input 
-{   width: 30%;
-   max-width: 600px; 
-   padding: 8px 16px;
-   border: 1px solid #ccc;
-    border-radius: 4px; font-size: 16px;
-    height: 40px;
-   } 
-   .search  { 
-    display: flex; 
-     justify-content: center; 
-     margin: 20px ; 
-     }
-.sbutton{
-  margin-left:10px;
-      height: 35px;
-      margin-top: 3px;
-      width: 80px;
 
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.bulkApplyContainer {
+  text-align: center;
+  margin-top: 35px;
+}
+
+.bulkApplyInfo {
+  color: #475569;
+  margin-bottom: 14px;
+}
+
+.bulkApplyBtn {
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #4f46e5
+  );
+  color: white;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.bulkApplyBtn:hover {
+  transform: translateY(-2px);
+}
+
+.empty {
+  text-align: center;
+  margin-top: 40px;
+  color: #64748b;
+  font-size: 18px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 40px;
+}
+
+.pagination button {
+  background: #afafb3;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 18px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.pagination button:hover {
+  background: #1d4ed8;
+}
+
+.pagination button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  width: 550px;
+  max-width: 95%;
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+
+.modal h2 {
+  margin-top: 0;
+  color: #0f172a;
+}
+
+.resultRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.success {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.warning {
+  color: #ea580c;
+  font-weight: 600;
+}
+
+.modal button {
+  margin-top: 18px;
+  width: 100%;
+  border: none;
+  background: #2563eb;
+  color: white;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.modal button:hover {
+  background: #1d4ed8;
+}
+
+.skillTest {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.salary{
+  margin-top: auto;
+  font-size: 18px;
+  font-weight: 700;
+  color: #059669;
+}
+.moreSkills{
+  background: #f1f5f9;
+  color:#475569;
+  padding :7px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+@media (max-width: 992px) {
+  .jobs {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .searchWrapper {
+    flex-direction: column;
+  }
+
+  .searchInput,
+  .searchWrapper select,
+  .searchBtn {
+    width: 100%;
+  }
+
+  .jobs {
+    grid-template-columns: 1fr;
+  }
+
+  .btnContainer {
+    flex-direction: column;
+  }
+
+  .suggestions {
+    width: calc(100% - 36px);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 20px 12px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .card h3 {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
 }

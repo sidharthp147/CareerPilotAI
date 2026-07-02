@@ -9,10 +9,15 @@ function JobDetails() {
   const [error, setError] = useState("");
   const [job, setJob] = useState(null);
   const [applied, setApplied] = useState(false);
+  const [applying, setApplying] = useState(false);
+  const [notice, setNotice] = useState("");
+  const [noticeType, setNoticeType] = useState("success");
+  const role= localStorage.getItem("role");
 
 
   useEffect(() => {
       const token = localStorage.getItem("token");
+     
     const fetchJob = async () => {
       try {
         const res = await api.get(`/jobs/Jobs/${id}`,{headers: {Authorization: `Bearer ${token}`,},});
@@ -32,7 +37,7 @@ function JobDetails() {
         setApplied(res.data.applied);
       } catch (err) {
         console.error("Apply check failed");
-        console.log(err)
+        console.error(err)
       }
     };
 
@@ -42,11 +47,17 @@ function JobDetails() {
   const applyJob = async () => {
       const token = localStorage.getItem("token");
     try {
+      if (applying || applied) return;
+      setApplying(true);
+      setNotice("");
       await api.post(`/jobs/jobs/${id}/apply`,{},{headers: {Authorization: `Bearer ${token}`,},});
       setApplied(true);
     } catch (err) {
-      alert(err.response?.data?.detail || "Error applying");
-      console.log(err)
+      setNoticeType("error");
+      setNotice(err.response?.data?.detail || "Error applying");
+      console.error(noticeType)
+    } finally {
+      setApplying(false);
     }
   };
 
@@ -57,18 +68,38 @@ function JobDetails() {
   return (
     <div className={styles.container}>
       {error && <p style={{ color: "red" }}>{error}</p>}
+      <button onClick={() => window.history.back()} style={{ marginBottom: "20px",color:"Red",background:"transparent",border:"1px solid red",padding:"5px 10px",borderRadius:"5px",marginLeft:"380px" }}>        X
+      </button>
+      <h2>{job["heading"].charAt(0).toUpperCase() + job["heading"].slice(1)}</h2>
+      <p>Skills:{job["skills"]}</p>
+      <p>Location:{job["location"]}</p>
+      <p>Description:{job["description"]}</p>
+      <p>Salary:{job["salary_range"]}</p>
+      <p>Job Type:{job["job_type"]}</p>
+      <p>Experience:{job["experience"]}</p>
 
-      <h2>{job.heading}</h2>
-      <p>{job.location}</p>
-      <p>{job.description}</p>
-
+      {notice && (
+        <p
+          style={{
+            marginTop: 12,
+            padding: "10px 12px",
+            borderRadius: 10,
+            border: "1px solid #f5c2c7",
+            background: "#f8d7da",
+            color: "#842029",
+          }}
+        >
+          {notice}
+        </p>
+      )}
+      {role==="USER" && (
       <button
         onClick={applyJob}
-        disabled={applied}
+        disabled={applied || applying}
         className={applied ? styles.appliedBtn : styles.applyBtn}
       >
-        {applied ? "Applied" : "Apply Now"}
-      </button>
+        {applied ? "Applied" : applying ? "Applying..." : "Apply Now"}
+      </button>)}
     </div>
   );
 }
