@@ -15,14 +15,14 @@ async def block_middleware(request:Request,call_next):
   if request.method=="OPTIONS":
     return await call_next(request)
   SECRET=SECRET_KEY
-  ALGORITHM=ALGORITHM
+  ALGO=ALGORITHM
   token=request.headers.get("Authorization")
   print("token")
   user_id=None
   if token and token.startswith("Bearer "):
     token=token.split(" ")[1]
     try:
-        payload=jwt.decode(token,SECRET,algorithms=[ALGORITHM])
+        payload=jwt.decode(token,SECRET,algorithms=[ALGO])
         user_id=payload.get("sub")
         request.state.user_id=user_id
     except JWTError:
@@ -35,7 +35,7 @@ async def block_middleware(request:Request,call_next):
         print("inisde")
         remaining_seconds=await redis.ttl(user_key)
         response= JSONResponse(status_code=403,content={"detail":"You are Blocked","remaining_seconds":int(remaining_seconds)})
-        response.headers["Access-Control-Allow-Origin"]="http://localhost:5173"
+        response.headers["Access-Control-Allow-Origin"]="https://career-pilot-ai-147.vercel.app"
         response.headers["Access-Control-Allow-Credentials"]="true"
         return response
   client_ip=request.client.host
@@ -46,7 +46,7 @@ async def block_middleware(request:Request,call_next):
     remaining_seconds=await redis.ttl(ip_key)
     print("remaining_seconds",remaining_seconds)
     response= JSONResponse(status_code=403,content={"detail":"You are Blocked","remaining_seconds":int(remaining_seconds)})
-    response.headers["Access-Control-Allow-Origin"]="http://localhost:5173"
+    response.headers["Access-Control-Allow-Origin"]="https://career-pilot-ai-147.vercel.app"
     response.headers["Access-Control-Allow-Credentials"]="true"
     print("response",response)
     return response  
