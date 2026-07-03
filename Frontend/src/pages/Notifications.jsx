@@ -30,7 +30,7 @@ function Notifications() {
     useEffect(() => {
         if (!user) return;
 
-        const ws = new WebSocket(`ws://localhost:8000/ws/usernotifications/${user}`);
+        const ws = new WebSocket(`wss://career-pilot-ai-147.vercel.app/ws/usernotifications/${user}`);
 
         ws.onopen = () => {
         };

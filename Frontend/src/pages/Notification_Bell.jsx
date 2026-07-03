@@ -33,7 +33,7 @@ function NotificationBell() {
 
         const decoded = jwtDecode(token);
 
-        const ws = new WebSocket(`ws://localhost:8000/ws/usernotifications/${decoded.sub}`);
+        const ws = new WebSocket(`wss://career-pilot-ai-147.vercel.app/ws/usernotifications/${decoded.sub}`);
 
         ws.onopen = () => {
         };

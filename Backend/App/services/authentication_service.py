@@ -491,7 +491,7 @@ def send_verification_email(
 ):
 
     verify_url = (
-        f"http://localhost:5173/verify-email?token={token}"
+        f"https://careerpilotai-production-d61a.up.railway.app/verify-email?token={token}"
     )
 
     subject = "Verify your email"

@@ -173,7 +173,7 @@ function JobList() {
     let manuallyClosed = false;
 
     wsRef.current =
-      new WebSocket(`ws://localhost:8000/ai/ai?token=${token}`);
+      new WebSocket(`wss://career-pilot-ai-147.vercel.app/ai/ai?token=${token}`);
       
 
     wsRef.current.onopen = () => {

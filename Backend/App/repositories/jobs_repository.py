@@ -7,7 +7,6 @@ from models.application import Applications
 from models.recruiters import Recruiters
 from models.users import JobSeekers
 from models.jobs import Skills,JobSkills,SavedJobs
-from core.redis import redis_client as redis
 import hashlib
 async def list_jobs(ids: list, search: str | None, job_type: str | None,skills: list | None,salary_range: str | None,experience: str | None, location: str | None, limit: int, offset: int, db: Session):
     stmt = db.query(Jobs)
