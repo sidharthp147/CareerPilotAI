@@ -1,6 +1,6 @@
 import axios from "axios";
 const api = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "https://career-pilot-ai-147.vercel.app",
   withCredentials: true
 });
 
