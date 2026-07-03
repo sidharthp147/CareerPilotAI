@@ -6,7 +6,7 @@ engine=create_engine(DATABASE_URL,connect_args={"ssl":{"ca":"core/ca.pem"}})
 try:
     with engine.connect() as connection:
         connection.execute(text("SELECT 1"))
-        print("Database connection successful.")
+        print("Database connection successfullll.")
 except Exception as e:
     print(f"Database connection failedddd: {e}")
 sessionLocal=sessionmaker(bind=engine)
