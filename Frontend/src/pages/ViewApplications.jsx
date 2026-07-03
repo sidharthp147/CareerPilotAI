@@ -50,7 +50,7 @@ function ApplicationDetails() {
 
     const user_id = localStorage.getItem("user_id");
 
-    const ws = new WebSocket(`wss://career-pilot-ai-147.vercel.app/ws/recruiter/${user_id}`);
+    const ws = new WebSocket(`wss://careerpilotai-production-d61a.up.railway.app//ws/recruiter/${user_id}`);
 
     ws.onopen = () => {
     };
