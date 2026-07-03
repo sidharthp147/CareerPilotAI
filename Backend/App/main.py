@@ -21,7 +21,6 @@ Base.metadata.create_all(bind=engine)
 setup_logging() 
 logger=logging.getLogger(__name__)
 app = FastAPI()
-FRONTEND_DIR = "../../Frontend/dist"   # 👈 important
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
     logger.error(f"Unhandled error: {str(exc)}")
@@ -53,18 +52,3 @@ app.include_router(admin.router)
 app.include_router(users.router)
 app.include_router(AI.router)
 app.include_router(websocket.router)
-@app.get("/{full_path:path}")
-async def serve_react_app(full_path: str):
-    file_path = os.path.join(FRONTEND_DIR, full_path)
-
-    if os.path.exists(file_path) and os.path.isfile(file_path):
-        response = FileResponse(file_path)
-
-        if "assets" in full_path:
-            response.headers["Cache-Control"] = "public, max-age=31536000, immutable"
-        else:
-            response.headers["Cache-Control"] = "no-cache"
-
-        return response
-
-    return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
