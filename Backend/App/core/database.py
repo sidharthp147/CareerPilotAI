@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine,text
 from core.config import DATABASE_URL
 from sqlalchemy.orm import sessionmaker,declarative_base
 DATABASE_URL=DATABASE_URL
@@ -8,7 +8,7 @@ try:
         connection.execute(text("SELECT 1"))
         print("Database connection successful.")
 except Exception as e:
-    print(f"Database connection failed: {e}")
+    print(f"Database connection failedddd: {e}")
 sessionLocal=sessionmaker(bind=engine)
 Base=declarative_base()
 def get_db():
