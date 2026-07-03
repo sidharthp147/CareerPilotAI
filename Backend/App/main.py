@@ -38,10 +38,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-##app.middleware("http")(block_middleware)
-##app.middleware("http")(logging_middleware)
+app.middleware("http")(block_middleware)
+app.middleware("http")(logging_middleware)
 app.state.limiter = limiter
-##app.add_exception_handler(RateLimitExceeded, rate_limit_handler)
+app.add_exception_handler(RateLimitExceeded, rate_limit_handler)
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
