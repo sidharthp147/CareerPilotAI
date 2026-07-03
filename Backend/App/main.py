@@ -33,7 +33,7 @@ Instrumentator().instrument(app).expose(app)
 app.add_middleware(SlowAPIMiddleware)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:8000", "http://localhost:8000", "http://localhost:5173","career-pilot-ai-147.vercel.app"],
+    allow_origins=["http://127.0.0.1:8000", "http://localhost:8000", "http://localhost:5173","https://career-pilot-ai-147.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
