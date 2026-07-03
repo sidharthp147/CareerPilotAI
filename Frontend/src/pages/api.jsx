@@ -1,6 +1,6 @@
 import axios from "axios";
 const api = axios.create({
-  baseURL: "https://career-pilot-ai-147.vercel.app",
+  baseURL: "https://careerpilotai-production-d61a.up.railway.app/",
   withCredentials: true
 });
 
