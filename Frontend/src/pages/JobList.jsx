@@ -173,7 +173,7 @@ function JobList() {
     let manuallyClosed = false;
 
     wsRef.current =
-      new WebSocket(`wss://wss://careerpilotai-production-d61a.up.railway.app/ai/ai?token=${token}`);
+      new WebSocket(`wss://careerpilotai-production-d61a.up.railway.app/ai/ai?token=${token}`);
       
 
     wsRef.current.onopen = () => {
