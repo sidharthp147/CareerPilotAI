@@ -1,27 +1,67 @@
 .container {
-  padding: 30px; /* Removed the duplicate 20px padding */
-  font-size: 20px;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  width: min(90vw, 500px);
+  max-height: 90vh;
+
+  padding: 25px;
+  box-sizing: border-box;
+
   background: #f6f9fd;
   color: black;
+  border-radius: 12px;
+
+  overflow-y: auto;
   z-index: 9999;
-  width: 500px;
-  height: 90%;
-  border-radius: 10px;
-  
-  /* Add these two lines */
-  overflow-y: auto; 
-  box-sizing: border-box; 
 }
 
-.applyBtn {
-  background: green;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
+.closeBtn {
+  float: right;
+  background: transparent;
+  color: red;
+  border: 1px solid red;
+  padding: 6px 12px;
+  border-radius: 6px;
   cursor: pointer;
+}
+
+.applyBtn,
+.appliedBtn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  font-size: 16px;
+}
+@media (max-width: 768px) {
+  .container {
+    width: 95vw;
+    max-height: 95vh;
+    padding: 18px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+
+  .container h2 {
+    font-size: 22px;
+  }
+
+  .container p {
+    font-size: 15px;
+    line-height: 1.6;
+    word-break: break-word;
+  }
+
+  .closeBtn {
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+
+  .applyBtn,
+  .appliedBtn {
+    font-size: 15px;
+    padding: 12px;
+  }
 }

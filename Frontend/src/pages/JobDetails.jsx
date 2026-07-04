@@ -68,7 +68,7 @@ function JobDetails() {
   return (
     <div className={styles.container}>
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <button onClick={() => window.history.back()} style={{ marginBottom: "20px",color:"Red",background:"transparent",border:"1px solid red",padding:"5px 10px",borderRadius:"5px",marginLeft:"380px" }}>        X
+      <button onClick={() => window.history.back()} className={styles.closeBtn}>        X
       </button>
       <h2>{job["heading"].charAt(0).toUpperCase() + job["heading"].slice(1)}</h2>
       <p>Skills:{job["skills"]}</p>
