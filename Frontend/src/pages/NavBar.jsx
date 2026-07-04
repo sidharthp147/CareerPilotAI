@@ -152,7 +152,6 @@ function Navbar({ isLoggedIn, setIsLoggedIn, role, setRole }) {
 
           {!isLoggedIn && (
             <>
-              <NavLink to="/" onClick={() => setMenuOpen(false)}>Home</NavLink>
               <NavLink to="/jobs" onClick={() => setMenuOpen(false)}>Jobs</NavLink>
               <NavLink to="/login" onClick={() => setMenuOpen(false)}>Login</NavLink>
               <NavLink to="/register" onClick={() => setMenuOpen(false)}>Register</NavLink>

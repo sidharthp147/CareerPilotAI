@@ -81,3 +81,49 @@ h2{
  margin-left: 20%;
  margin-top: 10px;
 }
+@media screen and (max-width: 768px) {
+
+  .loginContainer {
+    width: 100%;
+    margin-left: 0;
+    padding: 20px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .loginPage {
+    width: 100%;
+    max-width: 360px;
+    padding: 20px;
+  }
+
+  .loginForm {
+    width: 100%;
+    padding: 15px;
+    box-shadow: 0 8px 20px rgba(117, 151, 153, 0.35);
+  }
+
+  .loginForm label,
+  .loginForm input {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .loginButton {
+    width: 100%;
+    margin: 20px 0 0;
+    font-size: 18px;
+  }
+
+  .registerLink {
+    margin: 15px 0 0;
+    text-align: center;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 28px;
+  }
+}
