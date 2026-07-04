@@ -30,7 +30,7 @@ function Notifications() {
     useEffect(() => {
         if (!user) return;
 
-        const ws = new WebSocket(`wss://careerpilotai-production-d61a.up.railway.app//ws/usernotifications/${user}`);
+        const ws = new WebSocket(`wss://wss://careerpilotai-production-d61a.up.railway.app/ws/usernotifications/${user}`);
 
         ws.onopen = () => {
         };

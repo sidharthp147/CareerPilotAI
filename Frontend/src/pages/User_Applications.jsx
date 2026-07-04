@@ -42,7 +42,7 @@ function User_Applications() {
     const user_id =
       localStorage.getItem("user_id");
 
-    const ws = new WebSocket(`wss://careerpilotai-production-d61a.up.railway.app//ws/user/${user_id}`);
+    const ws = new WebSocket(`wss://wss://careerpilotai-production-d61a.up.railway.app/ws/user/${user_id}`);
     
     ws.onopen = () => {
       
