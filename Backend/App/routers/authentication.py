@@ -75,9 +75,11 @@ def login(request: Request, response: Response, data: LoginRequest, db: Session 
         key="refresh_token",
         value=refresh_token,
         httponly=True,
-        secure=True,
-        samesite="lax",
+        secure=True,  
+        samesite="none",
     )
+    print("refresh_token:", refresh_token)
+    print("Refresh Token Cookie:", request.cookies.get("refresh_token"))
     authentication_service.save_refresh_for_user(db, user.id, refresh_token)
     return {"token": token, "success": True, "message": "Login successful", "role": user.role, "user_id": user.id}
 @router.post("/registration")
@@ -108,15 +110,17 @@ def rotate_refresh_token(request: Request,response: Response,db: Session = Depen
         key="refresh_token",
         value=result["token"],
         httponly=True,
-        secure=True,#Change this to True when deploying to production because this is just for testing
-        samesite="lax",
+        secure=True, 
+        samesite="none",
     )
     return {"token": result["access_token"], "success": True, "message": "Token refreshed successfully"}
 
 @router.post("/logout")
 def logout(request: Request, response: Response, db: Session = Depends(get_db)):
     refresh_token_cookie = request.cookies.get("refresh_token")
+    print("Refresh Token Cookie:", refresh_token_cookie)  # Debugging line
     result = authentication_service.logout_user(refresh_token_cookie, db)
+    print("Logout result:", result)  # Debugging line
     response.delete_cookie(key="refresh_token")
     return result
 @router.get("/verify-email")
