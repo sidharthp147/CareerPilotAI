@@ -30,7 +30,7 @@ function Notifications() {
     useEffect(() => {
         if (!user) return;
 
-        const ws = new WebSocket(`wss:${import.meta.env.VITE_API_URL}/ws/usernotifications/${user}`);
+        const ws = new WebSocket(`wss:${import.meta.env.VITE_API_URL_WS}/ws/usernotifications/${user}`);
 
         ws.onopen = () => {
         };

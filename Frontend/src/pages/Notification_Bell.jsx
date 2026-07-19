@@ -33,7 +33,7 @@ function NotificationBell() {
 
         const decoded = jwtDecode(token);
 
-        const ws = new WebSocket(`wss:${import.meta.env.VITE_API_URL}/ws/usernotifications/${decoded.sub}`);
+        const ws = new WebSocket(`wss:${import.meta.env.VITE_API_URL_WS}/ws/usernotifications/${decoded.sub}`);
 
         ws.onopen = () => {
         };
