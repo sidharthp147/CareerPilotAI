@@ -42,7 +42,7 @@ function User_Applications() {
     const user_id =
       localStorage.getItem("user_id");
 
-    const ws = new WebSocket(`ws:${import.meta.env.VITE_API_URL}/ws/user/${user_id}`);
+    const ws = new WebSocket(`wss:${import.meta.env.VITE_API_URL}/ws/user/${user_id}`);
     
     ws.onopen = () => {
       

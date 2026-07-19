@@ -173,7 +173,7 @@ function JobList() {
     let manuallyClosed = false;
 
     wsRef.current =
-      new WebSocket(`ws:${import.meta.env.VITE_API_URL}/ai/ai?token=${token}`);
+      new WebSocket(`wss:${import.meta.env.VITE_API_URL}/ai/ai?token=${token}`);
       
 
     wsRef.current.onopen = () => {
