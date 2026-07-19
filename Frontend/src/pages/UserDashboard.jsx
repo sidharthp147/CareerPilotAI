@@ -153,7 +153,7 @@ function UserDashboard() {
                 <button
                   className={styles.btn}
                   onClick={() =>
-                    navigate(/UserDashboard/`${job.id}`)
+                    navigate(`/jobs/${job.id}`)
                   }
                 >
                   View More Details

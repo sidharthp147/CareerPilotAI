@@ -56,7 +56,7 @@ def debug_vector():
     points, _ = vector_service.client.scroll(collection_name="jobsvectors",limit=10,with_vectors=True)
     return points
 def job_to_dict(job):
-    return {"id": job.id, "recruiter id": job.recruiter_id,"heading": job.heading,"skills": job.skills, "location": job.location, "salary_range": job.salary_range, "job_type": job.job_type, "description": job.description}
+    return {"id": job.id, "recruiter id": job.recruiter_id,"heading": job.heading,"skills": job.skills, "location": job.location, "salary_range": job.salary_range, "job_type": job.job_type, "description": job.description, "experience": job.experience, "created_at": job.created_at.isoformat(), "is_deleted": job.is_deleted}
 @router.get("/keywords")
 def get_keywords(db: Session = Depends(get_db)):
     return jobs_service.get_keywords(db)

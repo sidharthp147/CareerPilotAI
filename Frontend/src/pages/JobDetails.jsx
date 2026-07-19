@@ -66,17 +66,18 @@ function JobDetails() {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.overlay}>
       {error && <p style={{ color: "red" }}>{error}</p>}
+      <div className={styles.modal}>
       <button onClick={() => window.history.back()} className={styles.closeBtn}>        X
       </button>
-      <h2>{job["heading"].charAt(0).toUpperCase() + job["heading"].slice(1)}</h2>
-      <p>Skills:{job["skills"]}</p>
-      <p>Location:{job["location"]}</p>
-      <p>Description:{job["description"]}</p>
-      <p>Salary:{job["salary_range"]}</p>
-      <p>Job Type:{job["job_type"]}</p>
-      <p>Experience:{job["experience"]}</p>
+      <h2>{job["heading"].charAt(0).toUpperCase() + job["heading"].slice(1)}</h2><br></br>
+      <p><b>Skills</b>:{job["skills"]}</p><br></br>
+      <p><b>Location</b>:{job["location"]}</p><br></br>
+      <p><b>Description</b>:{job["description"]}</p><br></br>
+      <p><b>Salary</b>:{job["salary_range"]}</p><br></br>
+      <p><b>Job Type</b>:{job["job_type"]}</p><br></br>
+      <p><b>Experience</b>:{job["experience"]}</p><br></br>
 
       {notice && (
         <p
@@ -93,13 +94,16 @@ function JobDetails() {
         </p>
       )}
       {role==="USER" && (
-      <button
+      
+      <div className={styles.applyButtonContainer}><button
         onClick={applyJob}
         disabled={applied || applying}
-        className={applied ? styles.appliedBtn : styles.applyBtn}
+        className={applied ? styles.appliedButton : styles.applyButton}
       >
         {applied ? "Applied" : applying ? "Applying..." : "Apply Now"}
-      </button>)}
+      </button></div>
+      )}
+    </div>
     </div>
   );
 }

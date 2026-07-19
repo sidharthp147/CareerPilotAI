@@ -7,9 +7,8 @@ from sqlalchemy.orm import Session
 from fastapi import HTTPException
 from repositories import authentication_repository, jobs_repository, users_repository
 from services.vector_service import VectorService
-from sentence_transformers import SentenceTransformer
+from services.model_service import model
 from services.Notification_service import notifications
-model=SentenceTransformer('all-MiniLM-L6-v2')
 from core.database import sessionLocal
 import logging
 logger=logging.getLogger(__name__)
@@ -34,8 +33,8 @@ async def list_jobs(db: Session,current_user: int | None, search: str | None, jo
         job_type=search_response["job_type"] if "job_type" in search_response else None
         cache_key=f"cache:jobs:{hashlib.md5(search.encode()).hexdigest()}:{job_type}:{location}"
         cached_data=await redis.get(cache_key)
-        ##if cached_data:
-            ##return json.loads(cached_data)
+        if cached_data:
+            return json.loads(cached_data)
         vector_service=VectorService()
         resume_data=vector_service.get_resume_data(user.id)
         userdetails={}
@@ -72,8 +71,8 @@ async def list_jobs(db: Session,current_user: int | None, search: str | None, jo
         return {"total": total, "jobs": jobs}
     cache_key=f"cache:jobs:{hashlib.md5(job_type.encode()).hexdigest()}:{hashlib.md5(location.encode()).hexdigest()}"
     cached_data=await redis.get(cache_key)
-    ##if cached_data:
-      ##return json.loads(cached_data)
+    if cached_data:
+      return json.loads(cached_data)
     response= await jobs_repository.list_jobs(None, search, job_type,None,None,None, location, limit, offset,db)
     await redis.setex(cache_key, 300, json.dumps(response))
     return response

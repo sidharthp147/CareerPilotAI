@@ -45,6 +45,7 @@ function Login({setIsLoggedIn,setRole}) {
   }
   else {
     setError("Something went wrong. Please try again later.")
+    console.error(err);
   }
   setLoading(false);
 }

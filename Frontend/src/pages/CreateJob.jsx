@@ -233,7 +233,7 @@ return (
           <label>Experience</label>
 
           <input
-            type="float"
+            type="number"
             name="experience"
             placeholder="2 years"
             value={formData.experience}

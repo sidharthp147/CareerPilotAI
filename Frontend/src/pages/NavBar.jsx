@@ -18,7 +18,8 @@ function Navbar({ isLoggedIn, setIsLoggedIn, role, setRole }) {
 
     try {
       setLoading(true);
-      await api.post("/auth/logout");
+       await api.post("/auth/logout");
+    
 
       localStorage.removeItem("token");
       localStorage.removeItem("USER");
@@ -29,7 +30,7 @@ function Navbar({ isLoggedIn, setIsLoggedIn, role, setRole }) {
       navigate("/login");
     } catch (err) {
       console.error(err);
-      alert("Logout failed");
+      alert("Logout failed", err);
     } finally {
       setLoading(false);
     }

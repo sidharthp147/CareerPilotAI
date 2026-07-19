@@ -16,7 +16,7 @@ function User_Applications() {
     try {
       const token = localStorage.getItem("token");
       const res =await  api.get(`/users/UserApplication?cursor=${cursor}`,{headers: {Authorization: `Bearer ${token}`},});
-      setStats(prev=>[...prev,...res.data.applications]);
+      setStats(res.data.applications);
       setTotal(res.data.total);
       setTotalApplied(res.data.total_applied);
       setTotalAccepted(res.data.total_accepted);
@@ -42,7 +42,7 @@ function User_Applications() {
     const user_id =
       localStorage.getItem("user_id");
 
-    const ws = new WebSocket(`wss://careerpilotai-production-d61a.up.railway.app/ws/user/${user_id}`);
+    const ws = new WebSocket(`ws:${import.meta.env.VITE_API_URL}/ws/user/${user_id}`);
     
     ws.onopen = () => {
       
@@ -54,7 +54,6 @@ function User_Applications() {
       );
 
     
-
       fetchstats();
     };
 

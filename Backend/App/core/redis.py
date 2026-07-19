@@ -1,9 +1,14 @@
+from time import time
+
 import redis.asyncio as redis
 from core.config import REDIS_URL
-try:
-  redis_client = redis.from_url(REDIS_URL,decode_responses=True)
-  redis_client.ping()
-  print("Redis client initialized successfully.")
-except Exception as e:
-  print(f"Error initializing Redis client: {e}")
-  redis_client = None
+MAX_RETRIES=5
+RETRY_DELAY=20
+for attempt in range(MAX_RETRIES):
+  try:
+    redis_client = redis.from_url(REDIS_URL,decode_responses=True)
+    break
+  except Exception as e:
+    if attempt==MAX_RETRIES-1:
+      raise e
+    time.sleep(RETRY_DELAY)

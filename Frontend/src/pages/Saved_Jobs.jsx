@@ -102,7 +102,7 @@ function Saved_Jobs() {
                   styles.meta
                 }
               >
-                📍 {job.location}
+                📍 <b>{job.location}</b>
               </p>
 
               <div
@@ -121,22 +121,22 @@ function Saved_Jobs() {
                   styles.jobId
                 }
               >
-                Job ID: {job.job_id}
+                <b>Job ID</b>: {job.job_id}
               </p>
 
               <p>
-                Skills:{" "}
+                <b>Skills</b>:{" "}
                 {job.skills}
               </p>
 
               <p>
-                Salary:{" "}
+                <b>Salary</b>:{" "}
                 {job.salary_range}
               </p>
 
               {job.experience && (
                 <p>
-                  Experience:{" "}
+                  <b>Experience</b>:{" "}
                   {job.experience}
                 </p>
               )}
