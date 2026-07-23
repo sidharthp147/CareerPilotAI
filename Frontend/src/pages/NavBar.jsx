@@ -169,7 +169,7 @@ function Navbar({ isLoggedIn, setIsLoggedIn, role, setRole }) {
                   <NavLink to="/UserProfile" onClick={() => setMenuOpen(false)}>Profile</NavLink>
                   <NavLink to="/SavedJobs" onClick={() => setMenuOpen(false)}>Saved Jobs</NavLink>
                   <NavLink to="/User_Applications" onClick={() => setMenuOpen(false)}>My Applications</NavLink>
-                  <NavLink to="/" onClick={() => setMenuOpen(false)}>Notifications</NavLink>
+                  <NavLink to="/notifications" onClick={() => setMenuOpen(false)}>Notifications</NavLink>
 
                 </>
               )}
